@@ -1,0 +1,53 @@
+# Arquivos de ambiente Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.Python
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+
+# Arquivos de distribuição / empacotamento
+dist/
+build/
+*.egg-info/
+
+# Arquivos temporários do PySpark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Logs
+*.log
+logs/
+spark-logs/
+
+# Arquivos temporários
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Arquivos grandes ou específicos do projeto que não precisam ser versionados
+# dados/entrada/arquivos_grandes.csv
+# dados/saida/resultados_temporarios.csv
+
+# Arquivos específicos do sistema
+Thumbs.db 
+
+# Arquivos específicos deste projeto
+diagrama.drawio
+exemplo_entrega.md
+instrucoes.txt
+.ipynb_* 
