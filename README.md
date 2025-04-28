@@ -23,43 +23,63 @@ Este projeto implementa uma modelagem dimensional (esquema estrela) a partir de 
 ### Tabelas de Dimensão:
 
 - **dim_cliente**  
-  Contém informações únicas sobre os clientes.
-  - id_cliente (surrogate key)
-  - nome_cliente
+
+Contém informações sobre os clientes.
+
+| Coluna       | Tipo    | Descrição                            |
+|--------------|---------|--------------------------------------|
+| id_cliente   | Long    | Surrogate key (chave substituta)     |
+| nome_cliente | String  | Nome do cliente                      |
 
 - **dim_produto**  
-  Armazena detalhes sobre os produtos vendidos.
-  - id_produto (surrogate key)
-  - nome_produto
-  - nome_categoria
-  - nome_fabricante
+
+Contém informações sobre os produtos vendidos.
+
+| Coluna         | Tipo    | Descrição                            |
+|----------------|---------|--------------------------------------|
+| id_produto     | Long    | Surrogate key (chave substituta)     |
+| nome_produto   | String  | Nome do produto                      |
+| nome_categoria | String  | Categoria do produto                 |
+| nome_fabricante| String  | Fabricante do produto                |
 
 - **dim_data**  
-  Derivada da coluna `data`, com decomposição em componentes temporais.
-  - id_data (surrogate key)
-  - data
-  - ano
-  - mes
-  - dia
-  - dia_semana
+
+Dimensão temporal com hierarquias e atributos descritivos.
+
+| Coluna       | Tipo    | Descrição                            |
+|--------------|---------|--------------------------------------|
+| id_data      | Long    | Surrogate key (chave substituta)     |
+| data         | Date    | Data completa                        |
+| ano          | Integer | Ano da data                          |
+| mes          | Integer | Mês da data                          |
+| dia          | Integer | Dia do mês                           |
+| dia_semana   | String  | Nome do dia da semana                |
 
 - **dim_local**  
-  Contém informações geográficas relacionadas às vendas.
-  - id_local (surrogate key)
-  - nome_cidade
-  - nome_estado
+
+Contém informações sobre localizações geográficas.
+
+| Coluna       | Tipo    | Descrição                            |
+|--------------|---------|--------------------------------------|
+| id_local     | Long    | Surrogate key (chave substituta)     |
+| nome_cidade  | String  | Nome da cidade                       |
+| nome_estado  | String  | Sigla do estado                      |
 
 ### Tabela Fato:
 
 - **fato_vendas**  
-  Tabela principal contendo as medidas de negócio e chaves para as dimensões.
-  - id_venda (surrogate key)
-  - id_cliente (foreign key)
-  - id_produto (foreign key)
-  - id_local (foreign key)
-  - id_data (foreign key)
-  - qtd_vendida (medida)
-  - valor_total (medida)
+
+A tabela fato central que contém métricas de vendas e referências para as dimensões.
+
+| Coluna       | Tipo    | Descrição                             |
+|--------------|---------|---------------------------------------|
+| id_venda     | Long    | Chave primária da tabela fato         |
+| id_cliente   | Long    | Chave estrangeira para dim_cliente    |
+| id_produto   | Long    | Chave estrangeira para dim_produto    |
+| id_local     | Long    | Chave estrangeira para dim_local      |
+| id_data      | Long    | Chave estrangeira para dim_data       |
+| qtd_vendida  | Integer | Quantidade de itens vendidos          |
+| valor_total  | Double  | Valor total da venda                  |
 
 ## 🛠 Tecnologias Utilizadas
 
